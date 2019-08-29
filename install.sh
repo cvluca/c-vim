@@ -26,6 +26,7 @@ install_vim () {
   if [[ -f "$HOME/.vimrc" ]]; then
     if [[ ! "$(readlink $HOME/.vimrc)" =~ $CURRENT_DIR/vimrc$ ]]; then
       mv "$HOME/.vimrc" "$HOME/.vimrc_old"
+      success "backup .vimrc file"
       ln -s "$CURRENT_DIR/vimrc" "$HOME/.vimrc"
     fi
   else
@@ -34,8 +35,9 @@ install_vim () {
 
   # backup .vim folder and link
   if [[ -d "$HOME/.vim" ]]; then
-		if [[ ! "$(readlink $HOME/.vim)" =~ $CURRENT_DIR$ ]]; then
-			mv "$HOME/.vim" "$HOME/.vim_old"
+    if [[ ! "$(readlink $HOME/.vim)" =~ $CURRENT_DIR$ ]]; then
+      mv "$HOME/.vim" "$HOME/.vim_old"
+      success "backup .vim folder"
       ln -s "$CURRENT_DIR" "$HOME/.vim"
     fi
   else
@@ -44,11 +46,17 @@ install_vim () {
   success "Installed c-vim for vim"
 }
 
+install_vim_done () {
+  vim +PlugInstall! +PlugClean! +qall
+  success "Installed plugins"
+}
+
 main () {
   if [ ! -e "$CURRENT_DIR/vimrc" ]; then
     fail "vimrc not exist"
   fi
   install_vim
+  install_vim_done
   exit 0
 }
 
