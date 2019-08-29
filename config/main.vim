@@ -1,3 +1,4 @@
+set rtp+=~/.vim/plugins/vim-colors-solarized
 call plug#begin()
 
 execute 'source' fnamemodify(expand('<sfile>'), ':h').'/plug.vim'
