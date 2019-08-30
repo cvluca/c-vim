@@ -14,3 +14,5 @@ set cindent
 
 " jk to Esc
 inoremap jk <Esc>
+
+set backspace=indent,eol,start
