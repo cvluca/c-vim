@@ -26,5 +26,6 @@ autocmd FileType nerdtree nmap <buffer> <left> o
 autocmd FileType nerdtree nmap <buffer> <right> o
 autocmd FileType nerdtree nmap <buffer> h o
 autocmd FileType nerdtree nmap <buffer> l o
+autocmd FileType nerdtree nmap <buffer> <Enter> C
 
 let NERDTreeShowHidden=1

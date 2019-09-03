@@ -15,6 +15,7 @@ set cindent
 " jk to Esc
 inoremap jk <Esc>
 
+set guioptions=T
 set backspace=indent,eol,start
 
 " Uncomment the following to have Vim jump to the last position when
@@ -26,3 +27,31 @@ endif
 " Remember info about open buffers on close
 set nocompatible
 set viminfo='1000,:1000,n~/.vim/.viminfo
+
+" Use spaces insteaad of tabs
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+
+" Show matching brackets when text indicator is over them
+set showmatch
+
+" cursor
+set cuc
+set cul
+
+" Use Doroid Sans Mono as the gui font
+set guifont=Droid\ Sans\ Mono\ Nerd\ Font\ Complete:h11
+
+" Always show the status line
+set laststatus=2
+
+" Use 256 colours (Use this setting only if your terminal supports 256 colours)
+set t_Co=256
+
+" Check filetype
+filetype on
+
+" Enable filetype plugins
+filetype plugin indent on

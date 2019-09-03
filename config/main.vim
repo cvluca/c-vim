@@ -11,11 +11,12 @@ call plug#end()
 call LoadConfig('base.vim')
 
 let plugins_config_source = [
-  \'nerdtree.vim',
-  \'solarized.vim',
-  \'coc.vim'
-\]
+  \'nerdtree',
+  \'nerdtree-git-plugin',
+  \'solarized',
+  \'coc'
+  \]
 
 for plugin in plugins_config_source
-  call LoadConfig('plugins/' . plugin)
+  call LoadConfig('plugins/' . plugin . '.vim')
 endfor
