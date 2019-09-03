@@ -30,9 +30,9 @@ set viminfo='1000,:1000,n~/.vim/.viminfo
 
 " Use spaces insteaad of tabs
 set expandtab
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+execute "set tabstop=" . g:c_vim_tabsize
+execute "set shiftwidth=" . g:c_vim_tabsize
+execute "set softtabstop=" . g:c_vim_tabsize
 
 " Show matching brackets when text indicator is over them
 set showmatch
@@ -61,4 +61,5 @@ let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 set list
-set listchars=tab:‣\ ,trail:·,precedes:«,extends:»
+"set listchars=tab:‣\ ,trail:·,precedes:«,extends:»
+set listchars=tab:→\ ,trail:·,precedes:«,extends:»
