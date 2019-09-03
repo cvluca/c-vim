@@ -1,17 +1,17 @@
-" Plugin nerdtree
-Plug 'scrooloose/nerdtree'
+let g:c_vim_plugins = [
+  \['scrooloose/nerdtree'],
+  \['Xuyuanp/nerdtree-git-plugin'],
+  \['neoclide/coc.nvim', {'branch': 'release'}],
+  \['vim-airline/vim-airline'],
+  \['vim-airline/vim-airline-themes'],
+  \['ntpeters/vim-better-whitespace'],
+  \]
 
-" Plugin nerdtree-git-plugin
-Plug 'Xuyuanp/nerdtree-git-plugin'
-
-" Plugin full language server protocol support as VSCode
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Plugin vim-airline
-Plug 'vim-airline/vim-airline'
-
-" Plugin vim-airline-themes
-Plug 'vim-airline/vim-airline-themes'
-
-" Plugin vim-better-whitespace
-Plug 'ntpeters/vim-better-whitespace'
+for plugin in g:c_vim_plugins
+  let list_len = len(plugin)
+  if len(plugin) == 1
+    Plug plugin[0]
+  else
+    Plug plugin[0], plugin[1]
+  endif
+endfor
