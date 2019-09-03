@@ -63,3 +63,9 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 set list
 "set listchars=tab:‣\ ,trail:·,precedes:«,extends:»
 set listchars=tab:→\ ,trail:·,precedes:«,extends:»
+
+set autochdir
+
+" change leader to space
+let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"

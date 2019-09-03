@@ -17,6 +17,7 @@ let plugins_config_source = [
   \'vim-airline',
   \'vim-airline-themes',
   \'vim-better-whitespace',
+  \'vim-easymotion',
   \'coc'
   \]
 

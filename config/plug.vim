@@ -5,6 +5,7 @@ let g:c_vim_plugins = [
   \['vim-airline/vim-airline'],
   \['vim-airline/vim-airline-themes'],
   \['ntpeters/vim-better-whitespace'],
+  \['easymotion/vim-easymotion'],
   \]
 
 for plugin in g:c_vim_plugins
