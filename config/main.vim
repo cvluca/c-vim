@@ -13,6 +13,7 @@ call LoadConfig('base.vim')
 let plugins_config_source = [
   \'nerdtree',
   \'nerdtree-git-plugin',
+  \'nerdcommenter',
   \'solarized',
   \'vim-airline',
   \'vim-airline-themes',

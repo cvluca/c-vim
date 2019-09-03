@@ -1,5 +1,7 @@
 let g:c_vim_plugins = [
   \['scrooloose/nerdtree'],
+  \['scrooloose/nerdcommenter'],
+  \['tpope/vim-commentary'],
   \['Xuyuanp/nerdtree-git-plugin'],
   \['neoclide/coc.nvim', {'branch': 'release'}],
   \['vim-airline/vim-airline'],
