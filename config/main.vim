@@ -16,6 +16,7 @@ let plugins_config_source = [
   \'solarized',
   \'vim-airline',
   \'vim-airline-themes',
+  \'vim-better-whitespace',
   \'coc'
   \]
 

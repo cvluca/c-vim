@@ -12,3 +12,6 @@ Plug 'vim-airline/vim-airline'
 
 " Plugin vim-airline-themes
 Plug 'vim-airline/vim-airline-themes'
+
+" Plugin vim-better-whitespace
+Plug 'ntpeters/vim-better-whitespace'
