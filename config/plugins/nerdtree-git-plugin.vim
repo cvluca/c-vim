@@ -10,3 +10,5 @@ let g:NERDTreeIndicatorMapCustom = {
     \ 'Ignored'   : '☒',
     \ "Unknown"   : "?"
     \ }
+
+let g:NERDTreeShowIgnoredStatus = 1
