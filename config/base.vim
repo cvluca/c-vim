@@ -16,3 +16,13 @@ set cindent
 inoremap jk <Esc>
 
 set backspace=indent,eol,start
+
+" Uncomment the following to have Vim jump to the last position when
+" reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+" Remember info about open buffers on close
+set nocompatible
+set viminfo='1000,:1000,n~/.vim/.viminfo

@@ -1,9 +1,21 @@
+fu! LoadConfig(file)
+  execute 'source' g:c_vim_source_path . '/config/' . a:file
+endf
+
 call plug#begin()
 
-execute 'source' fnamemodify(expand('<sfile>'), ':h').'/plug.vim'
+call LoadConfig('plug.vim')
 
 call plug#end()
 
-execute 'source' fnamemodify(expand('<sfile>'), ':h').'/base.vim'
+call LoadConfig('base.vim')
 
-execute 'source' fnamemodify(expand('<sfile>'), ':h').'/plugins/main.vim'
+let plugins_config_source = [
+  \'nerdtree.vim',
+  \'solarized.vim',
+  \'coc.vim'
+\]
+
+for plugin in plugins_config_source
+  call LoadConfig('plugins/' . plugin)
+endfor
