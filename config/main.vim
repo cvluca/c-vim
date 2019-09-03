@@ -14,6 +14,8 @@ let plugins_config_source = [
   \'nerdtree',
   \'nerdtree-git-plugin',
   \'solarized',
+  \'vim-airline',
+  \'vim-airline-themes',
   \'coc'
   \]
 
