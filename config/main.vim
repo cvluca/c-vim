@@ -19,7 +19,8 @@ let plugins_config_source = [
   \'vim-airline-themes',
   \'vim-better-whitespace',
   \'vim-easymotion',
-  \'coc'
+  \'coc',
+  \'auto-pairs',
   \]
 
 for plugin in plugins_config_source
