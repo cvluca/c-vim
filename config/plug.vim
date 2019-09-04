@@ -9,6 +9,7 @@ let g:c_vim_plugins = [
   \['ntpeters/vim-better-whitespace'],
   \['easymotion/vim-easymotion'],
   \['jiangmiao/auto-pairs'],
+  \['airblade/vim-gitgutter'],
   \]
 
 for plugin in g:c_vim_plugins

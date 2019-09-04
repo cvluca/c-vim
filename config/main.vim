@@ -21,6 +21,7 @@ let plugins_config_source = [
   \'vim-easymotion',
   \'coc',
   \'auto-pairs',
+  \'vim-gitgutter',
   \]
 
 for plugin in plugins_config_source
