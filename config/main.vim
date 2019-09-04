@@ -1,5 +1,8 @@
 fu! LoadConfig(file)
-  execute 'source' g:c_vim_source_path . '/config/' . a:file
+  let config_file = g:c_vim_source_path . '/config/' . a:file
+  if filereadable(config_file)
+    execute 'source' config_file
+  endif
 endf
 
 call plug#begin()
