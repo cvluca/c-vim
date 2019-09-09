@@ -69,3 +69,6 @@ set autochdir
 " change leader to space
 let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
+
+" disable swapfile
+set noswapfile
