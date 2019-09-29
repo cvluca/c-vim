@@ -26,7 +26,7 @@ endif
 
 " Remember info about open buffers on close
 set nocompatible
-set viminfo='1000,:1000,n~/.vim/.viminfo
+execute "set viminfo='1000,:1000,n" . g:c_vim_source_path . "/.viminfo"
 
 " Use spaces insteaad of tabs
 set expandtab
@@ -40,6 +40,9 @@ set showmatch
 " cursor
 set cuc
 set cul
+
+set ttyfast
+set lazyredraw
 
 " Use Doroid Sans Mono as the gui font
 set guifont=Droid\ Sans\ Mono\ Nerd\ Font\ Complete:h11
@@ -72,3 +75,5 @@ let g:mapleader = "\<Space>"
 
 " disable swapfile
 set noswapfile
+
+nmap <C-x> :bp\|bd #<CR>

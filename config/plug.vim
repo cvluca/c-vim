@@ -27,7 +27,7 @@ let coc_plugins = [
   \['neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile'}],
   \['neoclide/coc-git', {'do': 'yarn install --frozen-lockfile'}],
   \['neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}],
- \]
+  \]
 
 for plugin in g:c_vim_plugins + coc_plugins
   if len(plugin) == 1
