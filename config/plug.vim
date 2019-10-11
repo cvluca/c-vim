@@ -9,6 +9,7 @@ let g:c_vim_plugins = [
   \['easymotion/vim-easymotion'],
   \['jiangmiao/auto-pairs'],
   \['airblade/vim-gitgutter'],
+  \['rhysd/vim-clang-format'],
   \]
 
 let coc_plugins = [
