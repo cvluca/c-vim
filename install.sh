@@ -117,6 +117,8 @@ main () {
         fi
         install_vim
         install_vim_done
+        install_neovim
+        install_neovim_done
         exit 0
         ;;
       --help|-h)
