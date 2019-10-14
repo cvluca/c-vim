@@ -26,7 +26,7 @@ endif
 
 " Remember info about open buffers on close
 set nocompatible
-execute "set viminfo='1000,:1000,n" . g:c_vim_source_path . "/.viminfo"
+execute "set viminfo='1000,:1000,n" . g:c_vim_source_path . g:c_vim_viminfo
 
 " Use spaces insteaad of tabs
 set expandtab
