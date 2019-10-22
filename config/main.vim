@@ -17,7 +17,7 @@ let plugins_config_source = [
   \'nerdtree',
   \'nerdtree-git-plugin',
   \'nerdcommenter',
-  \'solarized',
+  \'gruvbox',
   \'vim-airline',
   \'vim-airline-themes',
   \'vim-better-whitespace',

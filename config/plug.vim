@@ -10,6 +10,7 @@ let g:c_vim_plugins = [
   \['jiangmiao/auto-pairs'],
   \['airblade/vim-gitgutter'],
   \['rhysd/vim-clang-format'],
+  \['morhetz/gruvbox'],
   \]
 
 let coc_plugins = [
