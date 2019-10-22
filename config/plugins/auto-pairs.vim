@@ -22,7 +22,7 @@
 "     hello();}|
 "     world();
 " }
-let g:AutoPairsFlyMode = 1
+" let g:AutoPairsFlyMode = 1
 let g:AutoPairsShortcutBackInsert = '<C-b>'
 
 " Fast wrap the word. all pairs will be consider as a block (include <>).
