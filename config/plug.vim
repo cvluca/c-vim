@@ -1,4 +1,4 @@
-let g:c_vim_plugins = [
+let c_vim_plugins = [
   \['scrooloose/nerdtree'],
   \['scrooloose/nerdcommenter'],
   \['tpope/vim-commentary'],
@@ -11,10 +11,10 @@ let g:c_vim_plugins = [
   \['airblade/vim-gitgutter'],
   \['rhysd/vim-clang-format'],
   \['morhetz/gruvbox'],
+  \['neoclide/coc.nvim', {'do': { -> coc#util#install()}}],
   \]
 
 let coc_plugins = [
-  \['neoclide/coc.nvim', {'do': { -> coc#util#install()}}],
   \['neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}],
   \['neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}],
   \['neoclide/coc-java', {'do': 'yarn install --frozen-lockfile'}],
@@ -31,10 +31,18 @@ let coc_plugins = [
   \['neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}],
   \]
 
-for plugin in g:c_vim_plugins + coc_plugins
-  if len(plugin) == 1
-    Plug plugin[0]
-  else
-    Plug plugin[0], plugin[1]
-  endif
-endfor
+fu! LoadPlugins(plugins)
+  for plugin in a:plugins
+    if len(plugin) == 1
+      Plug plugin[0]
+    else
+      Plug plugin[0], plugin[1]
+    endif
+  endfor
+endf
+
+call LoadPlugins(c_vim_plugins)
+
+if g:enable_coc_plugins == 1
+  call LoadPlugins(coc_plugins)
+endif
