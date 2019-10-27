@@ -27,6 +27,7 @@ let plugins_config_source = [
   \'coc',
   \'auto-pairs',
   \'vim-gitgutter',
+  \'vim-commentary',
   \]
 
 for plugin in plugins_config_source
