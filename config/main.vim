@@ -5,6 +5,8 @@ fu! LoadConfig(file)
   endif
 endf
 
+call LoadConfig('options.vim')
+
 call plug#begin()
 
 call LoadConfig('plug.vim')
