@@ -24,12 +24,15 @@ let plugins_config_source = [
   \'vim-airline-themes',
   \'vim-better-whitespace',
   \'vim-easymotion',
-  \'coc',
+  \'coc.nvim',
   \'auto-pairs',
   \'vim-gitgutter',
   \'vim-commentary',
   \]
 
 for plugin in plugins_config_source
-  call LoadConfig('plugins/' . plugin . '.vim')
+  let source = g:c_vim_source_path . '/plugged/' . plugin
+  if isdirectory(source)
+    call LoadConfig('plugins/' . plugin . '.vim')
+  endif
 endfor
