@@ -31,6 +31,10 @@ let coc_plugins = [
   \['neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}],
   \]
 
+let optional_plugins = [
+  \['mlr-msft/vim-loves-dafny', {'for': 'dafny'}],
+  \]
+
 fu! LoadPlugins(plugins)
   for plugin in a:plugins
     if len(plugin) == 1
@@ -45,4 +49,8 @@ call LoadPlugins(c_vim_plugins)
 
 if g:enable_coc_plugins == 1
   call LoadPlugins(coc_plugins)
+endif
+
+if g:enable_optional_plugins == 1
+  call LoadPlugins(optional_plugins)
 endif
