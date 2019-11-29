@@ -31,3 +31,24 @@ autocmd FileType nerdtree nmap <buffer> l o
 autocmd FileType nerdtree nmap <buffer> <Tab> C
 
 let NERDTreeShowHidden=1
+
+" sync open file with NERDTree
+" " Check if NERDTree is open or active
+function! IsNERDTreeOpen()
+  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+endfunction
+
+function! IsCocListOpen()
+  return expand('%') =~ 'list:///*'
+endfunction
+
+" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
+" file, and we're not in vimdiff
+function! SyncTree()
+  if &modifiable && IsNERDTreeOpen() && !IsCocListOpen() && strlen(expand('%')) > 0 && !&diff
+    NERDTreeFind
+    wincmd p
+  endif
+endfunction
+
+autocmd BufEnter * call SyncTree()
