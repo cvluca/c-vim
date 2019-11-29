@@ -12,6 +12,7 @@ let c_vim_plugins = [
   \['rhysd/vim-clang-format'],
   \['morhetz/gruvbox'],
   \['neoclide/coc.nvim', {'do': { -> coc#util#install()}}],
+  \['ryanoasis/vim-devicons'],
   \]
 
 let coc_plugins = [
