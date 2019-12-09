@@ -52,3 +52,7 @@ function! SyncTree()
 endfunction
 
 autocmd BufEnter * call SyncTree()
+
+if IsNERDTreeOpen()
+  autocmd BufWritePost * NERDTreeFocus | execute 'normal R' | wincmd p
+endif
