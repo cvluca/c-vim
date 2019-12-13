@@ -67,7 +67,7 @@ set list
 "set listchars=tab:‣\ ,trail:·,precedes:«,extends:»
 set listchars=tab:→\ ,trail:·,precedes:«,extends:»
 
-set autochdir
+" set autochdir
 
 " change leader to space
 let mapleader = "\<Space>"

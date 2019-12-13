@@ -13,6 +13,8 @@ let c_vim_plugins = [
   \['morhetz/gruvbox'],
   \['neoclide/coc.nvim', {'do': { -> coc#util#install()}}],
   \['ryanoasis/vim-devicons'],
+  \['junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }],
+  \['junegunn/fzf.vim'],
   \]
 
 let coc_plugins = [
@@ -24,7 +26,6 @@ let coc_plugins = [
   \['neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}],
   \['neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}],
   \['neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}],
-  \['fannheyward/coc-texlab', {'do': 'yarn install --frozen-lockfile'}],
   \['neoclide/coc-emmet', {'do': 'yarn install --frozen-lockfile'}],
   \['neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}],
   \['neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile'}],
