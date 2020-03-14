@@ -29,6 +29,7 @@ let plugins_config_source = [
   \'vim-gitgutter',
   \'vim-commentary',
   \'fzf.vim',
+  \'vim-mundo'
   \]
 
 for plugin in plugins_config_source

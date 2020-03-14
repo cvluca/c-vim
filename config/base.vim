@@ -15,6 +15,12 @@ set cindent
 " jk to Esc
 inoremap jk <Esc>
 
+"Treat long lines as break lines (useful when moving around in them)
+nnoremap k gk
+nnoremap gk k
+nnoremap j gj
+nnoremap gj j
+
 set guioptions=T
 set backspace=indent,eol,start
 

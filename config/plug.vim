@@ -15,6 +15,7 @@ let c_vim_plugins = [
   \['ryanoasis/vim-devicons'],
   \['junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }],
   \['junegunn/fzf.vim'],
+  \['simnalamburt/vim-mundo'],
   \]
 
 let coc_plugins = [
