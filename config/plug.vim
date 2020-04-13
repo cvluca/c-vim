@@ -16,6 +16,7 @@ let c_vim_plugins = [
   \['junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }],
   \['junegunn/fzf.vim'],
   \['simnalamburt/vim-mundo'],
+  \['fatih/vim-go'],
   \]
 
 let coc_plugins = [
