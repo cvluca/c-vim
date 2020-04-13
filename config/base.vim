@@ -82,6 +82,6 @@ let g:mapleader = "\<Space>"
 " disable swapfile
 set noswapfile
 
-nmap <C-x> :bp\|bd #<CR>
+nmap <C-q> :bp\|bd #<CR>
 
 au BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
