@@ -23,8 +23,8 @@ fail() {
 
 install_vim () {
   # backup old .vimrc file and link
-  if [[ -f "$HOME/.vimrc" ]]; then
-    if [[ ! "$(readlink $HOME/.vimrc)" =~ $CURRENT_DIR/vimrc$ ]]; then
+  if [ -f "$HOME/.vimrc" ]; then
+    if [ ! "$(readlink $HOME/.vimrc)" =~ $CURRENT_DIR/vimrc$ ]; then
       mv "$HOME/.vimrc" "$HOME/.vimrc.old"
       success "backup .vimrc file to .vimrc.old"
       ln -s "$CURRENT_DIR/vimrc" "$HOME/.vimrc"
@@ -34,8 +34,8 @@ install_vim () {
   fi
 
   # backup .vim folder and link
-  if [[ -d "$HOME/.vim" ]]; then
-    if [[ ! "$(readlink $HOME/.vim)" =~ $CURRENT_DIR$ ]]; then
+  if [ -d "$HOME/.vim" ]; then
+    if [ ! "$(readlink $HOME/.vim)" =~ $CURRENT_DIR$ ]; then
       mv "$HOME/.vim" "$HOME/.vim.old"
       success "backup .vim folder to .vim.old"
       ln -s "$CURRENT_DIR" "$HOME/.vim"
@@ -56,8 +56,8 @@ uninstall_vim () {
 }
 
 install_neovim() {
-  if [[ -d "$HOME/.config/nvim" ]]; then
-    if [[ ! "$(readlink $HOME/.config/nvim)" =~ $CURRENT_DIR$ ]]; then
+  if [ -d "$HOME/.config/nvim" ]; then
+    if [ ! "$(readlink $HOME/.config/nvim)" =~ $CURRENT_DIR$ ]; then
       mv "$HOME/.config/nvim" "$HOME/.config/nvim.old"
       success "backup nvim folder nvim.old"
       ln -s "$CURRENT_DIR" "$HOME/.config/nvim"
