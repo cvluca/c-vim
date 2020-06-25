@@ -33,6 +33,8 @@ let coc_plugins = [
   \['neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile'}],
   \['neoclide/coc-git', {'do': 'yarn install --frozen-lockfile'}],
   \['neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}],
+  \['clangd/coc-clangd', {'do': 'yarn install --frozen-lockfile'}],
+  \['jackguo380/vim-lsp-cxx-highlight'],
   \]
 
 let optional_plugins = [
