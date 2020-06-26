@@ -22,6 +22,8 @@ if g:nerdtree_open == 1
   endif
 
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+else
+  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 endif
 
 autocmd FileType nerdtree nmap <buffer> <left> o
@@ -45,13 +47,18 @@ endfunction
 " Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
 " file, and we're not in vimdiff
 function! SyncTree()
-  if &modifiable && IsNERDTreeOpen() && !IsCocListOpen() && strlen(expand('%')) > 0 && !&diff
-    NERDTreeFind
-    wincmd p
+  if &modifiable && IsNERDTreeOpen() && !IsCocListOpen() && strlen(expand('%')) > 0 && !&diff && bufname('%') !~# 'NERD_tree'
+    try
+      NERDTreeFind
+      if bufname('%') =~# 'NERD_tree'
+        setlocal cursorline
+        wincmd p
+      endif
+    endtry
   endif
 endfunction
 
-autocmd BufEnter * call SyncTree()
+autocmd BufEnter * silent! call SyncTree()
 
 if IsNERDTreeOpen()
   autocmd BufWritePost * NERDTreeFocus | execute 'normal R' | wincmd p
