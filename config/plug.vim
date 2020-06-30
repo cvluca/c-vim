@@ -11,7 +11,7 @@ let c_vim_plugins = [
   \['airblade/vim-gitgutter'],
   \['rhysd/vim-clang-format'],
   \['morhetz/gruvbox'],
-  \['neoclide/coc.nvim', {'do': { -> coc#util#install()}}],
+  \['neoclide/coc.nvim', {'branch': 'release'}],
   \['ryanoasis/vim-devicons'],
   \['junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }],
   \['junegunn/fzf.vim'],
