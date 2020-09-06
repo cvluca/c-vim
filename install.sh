@@ -8,23 +8,23 @@ BASEDIR=$(dirname $0)
 cd $BASEDIR
 CURRENT_DIR=`pwd`
 
-msg() {
+msg () {
   printf '%b\n' "$1" >&2
 }
 
-success() {
+success () {
   msg "${Green}[✔]${Color_off} ${1}${2}"
 }
 
-fail() {
+fail () {
   msg "${Red}[✘]${Color_off} ${1}${2}"
   exit 1
 }
 
 install_vim () {
   # backup old .vimrc file and link
-  if [ -f "$HOME/.vimrc" ]; then
-    if [ ! "$(readlink $HOME/.vimrc)" =~ $CURRENT_DIR/vimrc$ ]; then
+  if [[ -f "$HOME/.vimrc" ]]; then
+    if [[ ! "$(readlink $HOME/.vimrc)" =~ $CURRENT_DIR/vimrc$ ]]; then
       mv "$HOME/.vimrc" "$HOME/.vimrc.old"
       success "backup .vimrc file to .vimrc.old"
       ln -s "$CURRENT_DIR/vimrc" "$HOME/.vimrc"
@@ -34,8 +34,8 @@ install_vim () {
   fi
 
   # backup .vim folder and link
-  if [ -d "$HOME/.vim" ]; then
-    if [ ! "$(readlink $HOME/.vim)" =~ $CURRENT_DIR$ ]; then
+  if [[ -d "$HOME/.vim" ]]; then
+    if [[ ! "$(readlink $HOME/.vim)" =~ $CURRENT_DIR$ ]]; then
       mv "$HOME/.vim" "$HOME/.vim.old"
       success "backup .vim folder to .vim.old"
       ln -s "$CURRENT_DIR" "$HOME/.vim"
@@ -47,17 +47,20 @@ install_vim () {
 }
 
 install_vim_done () {
-  vim +PlugInstall! +PlugClean! +qall
+  if [[ ! -d "$CURRENT_DIR/plugged" ]]; then
+    vim +PlugInstall! +PlugClean! +qall
+  fi
   success "Installed plugins"
 }
 
-uninstall_vim () {
+uninstall_vim() {
+  # TODO
   success "Uninstalled c-vim for vim"
 }
 
-install_neovim() {
-  if [ -d "$HOME/.config/nvim" ]; then
-    if [ ! "$(readlink $HOME/.config/nvim)" =~ $CURRENT_DIR$ ]; then
+install_neovim () {
+  if [[ -d "$HOME/.config/nvim" ]]; then
+    if [[ ! "$(readlink $HOME/.config/nvim)" =~ $CURRENT_DIR$ ]]; then
       mv "$HOME/.config/nvim" "$HOME/.config/nvim.old"
       success "backup nvim folder nvim.old"
       ln -s "$CURRENT_DIR" "$HOME/.config/nvim"
@@ -69,13 +72,22 @@ install_neovim() {
   success "Installed c-vim for neovim"
 }
 
-install_neovim_done() {
-  nvim +PlugInstall! +PlugClean! +qall
+install_neovim_done () {
+  if [[ ! -d "$CURRENT_DIR/plugged" ]]; then
+    nvim +PlugInstall! +PlugClean! +qall
+  fi
   success "Installed plugins"
 }
 
 uninstall_neovim () {
+  # TODO
   success "Uninstalled c-vim for neovim"
+}
+
+use_default_setting () {
+  if [[ ! -f "$CURRENT_DIR/coc-settings.json" ]]; then
+    ln -s $CURRENT_DIR/coc-default-settings.json $CURRENT_DIR/coc-settings.json
+  fi
 }
 
 usage () {
@@ -107,18 +119,20 @@ main () {
             neovim)
               install_neovim
               install_neovim_done
+              use_default_setting
               exit 0
               ;;
             vim)
               install_vim
               install_vim_done
+              use_default_setting
               exit 0
           esac
         fi
         install_vim
-        install_vim_done
         install_neovim
         install_neovim_done
+        use_default_setting
         exit 0
         ;;
       --help|-h)
@@ -128,7 +142,9 @@ main () {
     esac
   else
     install_vim
-    install_vim_done
+    install_neovim
+    install_neovim_done
+    use_default_setting
   fi
 }
 
