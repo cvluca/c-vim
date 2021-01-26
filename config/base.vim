@@ -85,3 +85,6 @@ set noswapfile
 nmap <C-q> :bp\|bd #<CR>
 
 au BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+
+" enable mouse
+set mouse=a
