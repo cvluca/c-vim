@@ -17,6 +17,7 @@ let c_vim_plugins = [
   \['junegunn/fzf.vim'],
   \['simnalamburt/vim-mundo'],
   \['fatih/vim-go'],
+  \['derekwyatt/vim-fswitch'],
   \]
 
 let coc_plugins = [
