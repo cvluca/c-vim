@@ -1,5 +1,5 @@
-map <F4> :NERDTreeToggle<CR>
-imap <F4> <ESC>:NERDTreeToggle<CR>
+map <Leader><Leader>t :NERDTreeToggle<CR>
+imap <Leader><Leader>t <ESC>:NERDTreeToggle<CR>
 
 autocmd StdinReadPre * let s:std_in=1
 

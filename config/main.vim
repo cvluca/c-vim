@@ -30,7 +30,8 @@ let plugins_config_source = [
   \'vim-commentary',
   \'fzf.vim',
   \'vim-mundo',
-  \'vim-fswitch'
+  \'vim-fswitch',
+  \'vimspector',
   \]
 
 for plugin in plugins_config_source

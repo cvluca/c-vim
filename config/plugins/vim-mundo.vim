@@ -2,7 +2,7 @@
 set undofile
 let undodir = g:c_vim_source_path . '/undo'
 execute "set undodir=" . undodir
-nnoremap <F5> :MundoToggle<CR>
+nnoremap <Leader><Leader>u :MundoToggle<CR>
 
 let g:mundo_width = 60
 let g:mundo_preview_height = 40

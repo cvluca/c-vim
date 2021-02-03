@@ -18,6 +18,8 @@ let c_vim_plugins = [
   \['simnalamburt/vim-mundo'],
   \['fatih/vim-go'],
   \['derekwyatt/vim-fswitch'],
+  \['puremourning/vimspector'],
+  \['jackguo380/vim-lsp-cxx-highlight'],
   \]
 
 let coc_plugins = [
@@ -35,7 +37,6 @@ let coc_plugins = [
   \['neoclide/coc-git', {'do': 'yarn install --frozen-lockfile'}],
   \['neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}],
   \['clangd/coc-clangd', {'do': 'yarn install --frozen-lockfile'}],
-  \['jackguo380/vim-lsp-cxx-highlight'],
   \]
 
 let optional_plugins = [
