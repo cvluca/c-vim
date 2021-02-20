@@ -37,6 +37,7 @@ let coc_plugins = [
   \['neoclide/coc-git', {'do': 'yarn install --frozen-lockfile'}],
   \['neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}],
   \['clangd/coc-clangd', {'do': 'yarn install --frozen-lockfile'}],
+  \['voldikss/coc-cmake', {'do': 'yarn install --frozen-lockfile'}],
   \]
 
 let optional_plugins = [
