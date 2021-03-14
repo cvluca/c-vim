@@ -34,7 +34,7 @@ endif
 set nocompatible
 execute "set viminfo='1000,:1000,n" . g:c_vim_source_path . g:c_vim_viminfo
 
-" Use spaces insteaad of tabs
+" Use spaces instead of tabs
 set expandtab
 execute "set tabstop=" . g:c_vim_tabsize
 execute "set shiftwidth=" . g:c_vim_tabsize
