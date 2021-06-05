@@ -42,6 +42,7 @@ let coc_plugins = [
 
 let optional_plugins = [
   \['mlr-msft/vim-loves-dafny', {'for': 'dafny'}],
+  \['cvluca/vim-seL4'],
   \]
 
 fu! LoadPlugins(plugins)
