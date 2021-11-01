@@ -8,5 +8,6 @@
     }
   },
   "clangd.semanticHighlighting": true,
-  "python.jediEnabled": false
+  "python.jediEnabled": false,
+  "python.pythonPath": "python"
 }
