@@ -22,28 +22,31 @@ let c_vim_plugins = [
   \['jackguo380/vim-lsp-cxx-highlight'],
   \]
 
-let coc_plugins = [
-  \['neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}],
-  \['neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}],
-  \['neoclide/coc-java', {'do': 'yarn install --frozen-lockfile'}],
-  \['neoclide/coc-vetur', {'do': 'yarn install --frozen-lockfile'}],
-  \['neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}],
-  \['neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}],
-  \['neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}],
-  \['neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}],
-  \['neoclide/coc-emmet', {'do': 'yarn install --frozen-lockfile'}],
-  \['neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}],
-  \['neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile'}],
-  \['neoclide/coc-git', {'do': 'yarn install --frozen-lockfile'}],
-  \['neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}],
-  \['clangd/coc-clangd', {'do': 'yarn install --frozen-lockfile'}],
-  \['voldikss/coc-cmake', {'do': 'yarn install --frozen-lockfile'}],
-  \]
-
 let optional_plugins = [
   \['mlr-msft/vim-loves-dafny', {'for': 'dafny'}],
   \['cvluca/vim-seL4'],
   \]
+
+if g:enable_coc_plugins == 1
+  let g:coc_global_extensions=[
+    \'coc-tsserver',
+    \'coc-css',
+    \'coc-java',
+    \'coc-vetur',
+    \'coc-snippets',
+    \'coc-highlight',
+    \'coc-python',
+    \'coc-rls',
+    \'coc-emmet',
+    \'coc-yank',
+    \'coc-lists',
+    \'coc-git',
+    \'coc-json',
+    \'coc-clangd',
+    \'coc-cmake',
+    \'coc-powershell'
+    \]
+endif
 
 fu! LoadPlugins(plugins)
   for plugin in a:plugins
@@ -56,10 +59,6 @@ fu! LoadPlugins(plugins)
 endf
 
 call LoadPlugins(c_vim_plugins)
-
-if g:enable_coc_plugins == 1
-  call LoadPlugins(coc_plugins)
-endif
 
 if g:enable_optional_plugins == 1
   call LoadPlugins(optional_plugins)
