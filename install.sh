@@ -69,6 +69,18 @@ install_neovim () {
     mkdir -p "$HOME/.config"
     ln -s "$CURRENT_DIR" "$HOME/.config/nvim"
   fi
+
+  if [[ -d "$HOME/.local/share/nvim" ]]; then
+    if [[ ! "$(readlink $HOME/.local/share/nvim)" =~ $CURRENT_DIR$ ]]; then
+      mv "$HOME/.local/share/nvim" "$HOME/.local/share/nvim.old"
+      success "backup nvim folder nvim.old"
+      ln -s "$CURRENT_DIR" "$HOME/.local/share/nvim"
+    fi
+  else
+    mkdir -p "$HOME/.local/share"
+    ln -s "$CURRENT_DIR" "$HOME/.local/share/nvim"
+  fi
+
   success "Installed c-vim for neovim"
 }
 
