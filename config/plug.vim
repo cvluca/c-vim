@@ -18,8 +18,11 @@ let c_vim_plugins = [
   \['simnalamburt/vim-mundo'],
   \['fatih/vim-go'],
   \['derekwyatt/vim-fswitch'],
-  \['puremourning/vimspector'],
   \['jackguo380/vim-lsp-cxx-highlight'],
+  \]
+
+let c_vim_plugins_with_py = [
+  \['puremourning/vimspector'],
   \]
 
 let optional_plugins = [
@@ -62,4 +65,8 @@ call LoadPlugins(c_vim_plugins)
 
 if g:enable_optional_plugins == 1
   call LoadPlugins(optional_plugins)
+endif
+
+if has('python3')
+  call LoadPlugins(c_vim_plugins_with_py)
 endif
