@@ -1,7 +1,6 @@
 fu! LoadConfig(file)
-  let config_file = g:c_vim_source_path . '/config/' . a:file
-  if filereadable(config_file)
-    execute 'source' config_file
+  if filereadable(g:c_vim_config_path . a:file)
+    execute 'source' g:c_vim_config_path . a:file
   endif
 endf
 
@@ -35,10 +34,7 @@ let plugins_config_source = [
   \]
 
 for plugin in plugins_config_source
-  let source = g:c_vim_source_path . '/plugged/' . plugin
-  if has('win32')
-    call LoadConfig('plugins/' . plugin . '.vim')
-  elseif isdirectory(source)
-    call LoadConfig('plugins/' . plugin . '.vim')
+  if isdirectory(g:c_vim_plugged_path . plugin)
+    call LoadConfig(g:c_vim_plugins_config_dir . plugin . '.vim')
   endif
 endfor
