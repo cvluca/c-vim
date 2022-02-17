@@ -36,7 +36,9 @@ let plugins_config_source = [
 
 for plugin in plugins_config_source
   let source = g:c_vim_source_path . '/plugged/' . plugin
-  if isdirectory(source)
+  if has('win32')
+    call LoadConfig('plugins/' . plugin . '.vim')
+  elseif isdirectory(source)
     call LoadConfig('plugins/' . plugin . '.vim')
   endif
 endfor
