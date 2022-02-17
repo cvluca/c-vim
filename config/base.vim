@@ -90,7 +90,7 @@ au BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 set mouse=a
 
 " disable <C-z> on Windows
-if has('win32')
+if has('win32') && has('nvim')
   nnoremap <C-z> <nop>
   inoremap <C-z> <nop>
   vnoremap <C-z> <nop>
