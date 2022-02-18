@@ -30,7 +30,7 @@ function Install-Neovim
   New-Item -ItemType Junction -Path $NvimPath -Target $CurrentDir
 
   if (Test-Path -Path $NvimDataPath) {
-    if (Test-Path -Path $NvimBackupPath) {
+    if (Test-Path -Path $NvimDataBackupPath) {
       [IO.Directory]::Delete($NvimDataBackupPath)
     }
     Rename-Item -Path $NvimDataPath -NewName "nvim-data.old"
@@ -40,7 +40,7 @@ function Install-Neovim
 
   Write-Host "Installed c-vim for neovim" -ForegroundColor Green
 
-  if (Test-Path -Path "$CurrentDir\plugged") {
+  if (-Not (Test-Path -Path "$CurrentDir\plugged")) {
     nvim +PlugInstall! +PlugClean! +CocUpdate! +qall
     Write-Host "Installed plugins" -ForegroundColor Green
   }
