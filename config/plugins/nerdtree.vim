@@ -3,7 +3,7 @@ imap <Leader><Leader>t <ESC>:NERDTreeToggle<CR>
 
 autocmd StdinReadPre * let s:std_in=1
 
-if g:nerdtree_open == 1
+if g:c_vim_nerdtree_open == 1
   if winwidth('%') >= 160 && argc() != 0
     autocmd VimEnter *
       \ if argc() == 1

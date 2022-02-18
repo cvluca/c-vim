@@ -60,7 +60,7 @@ let coc_plugins = [
   \['coc-extenstions/coc-omnisharp', {'do': 'yarn install --frozen-lockfile'}],
   \]
 
-if g:enable_coc_plugins == 1
+if g:c_vim_enable_coc_plugins == 1
   if g:c_vim_coc_extensions_build == 1
     call LoadPlugins(coc_plugins)
   else
@@ -88,7 +88,7 @@ endif
 
 call LoadPlugins(c_vim_plugins)
 
-if g:enable_optional_plugins == 1
+if g:c_vim_enable_optional_plugins == 1
   call LoadPlugins(optional_plugins)
 endif
 
