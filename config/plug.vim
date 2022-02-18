@@ -47,7 +47,8 @@ if g:enable_coc_plugins == 1
     \'coc-json',
     \'coc-clangd',
     \'coc-cmake',
-    \'coc-powershell'
+    \'coc-powershell',
+    \'coc-omnisharp'
     \]
 endif
 
