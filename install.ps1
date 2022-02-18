@@ -12,32 +12,41 @@ function Uninstall
   Write-Host "Uninstall c-vim ..."
 }
 
+function Install-Item
+{
+  param (
+    [String] $Name,
+    [String] $Type,
+    [String] $Dir,
+    [String] $Target
+  )
+
+  $Path = "$Dir\$Name"
+  $BackupPath = "$Path.old"
+
+  if (Test-Path -Path $Path) {
+    if (Test-Path -Path $BackupPath) {
+      if ($Type -eq "Junction") {
+        [IO.Directory]::Delete($BackupPath)
+      }
+      else {
+        Remove-Item $BackupPath
+      }
+    }
+    Rename-Item -Path $Path -NewName "$Name.old"
+    Write-Host "backup $Name to $Name.old"
+  }
+
+  New-Item -ItemType $Type -Path $Path -Target $Target
+}
+
+
 function Install-Neovim
 {
   Write-Host "Install c-vim for neovim ..."
-  $NvimPath = "$HOME\AppData\Local\nvim"
-  $NvimBackupPath = "$NvimPath.old"
-  $NvimDataPath = "$HOME\AppData\Local\nvim-data"
-  $NvimDataBackupPath = "$NvimDataPath.old"
-
-  if (Test-Path -Path $NvimPath) {
-    if (Test-Path -Path $NvimBackupPath) {
-      [IO.Directory]::Delete($NvimBackupPath)
-    }
-    Rename-Item -Path $NvimPath -NewName "nvim.old"
-    Write-Host "backup nvim folder to nvim.old"
-  }
-  New-Item -ItemType Junction -Path $NvimPath -Target $CurrentDir
-
-  if (Test-Path -Path $NvimDataPath) {
-    if (Test-Path -Path $NvimDataBackupPath) {
-      [IO.Directory]::Delete($NvimDataBackupPath)
-    }
-    Rename-Item -Path $NvimDataPath -NewName "nvim-data.old"
-    Write-Host "backup nvim-data folder to nvim-data.old"
-  }
-  New-Item -ItemType Junction -Path $NvimDataPath -Target $CurrentDir
-
+  $Dir = "$Home\AppData\Local"
+  Install-Item -Name nvim -Type Junction -Dir $Dir -Target $CurrentDir
+  Install-Item -Name "nvim-data" -Type Junction -Dir $Dir -Target $CurrentDir
   Write-Host "Installed c-vim for neovim" -ForegroundColor Green
 
   if (-Not (Test-Path -Path "$CurrentDir\plugged")) {
@@ -49,29 +58,8 @@ function Install-Neovim
 function Install-Vim
 {
   Write-Host "Install c-vim for vim ..."
-  $VimrcPath = "$HOME\_vimrc"
-  $VimrcBackupPath = "$VimrcPath.old"
-  $VimfilesPath = "$HOME\vimfiles"
-  $VimfilesBackupPath = "$VimfilesPath.old"
-
-  if (Test-Path -Path $VimrcPath) {
-    if (Test-Path -Path $VimrcBackupPath) {
-      Remove-Item $VimrcBackupPath
-    }
-    Rename-Item -Path $VimrcPath -NewName "_vimrc.old"
-    Write-Host "backup _vimrc file to _vimrc.old"
-  }
-  New-Item -ItemType SymbolicLink -Path $VimrcPath -Target $CurrentDir\vimrc
-
-  if (Test-Path -Path $VimfilesPath) {
-    if (Test-Path -Path $VimfilesBackupPath) {
-      [IO.Directory]::Delete($VimfilesBackupPath)
-    }
-    Rename-Item -Path $VimfilesPath -NewName "vimfiles.old"
-    Write-Host "backup vimfiles folder to vimfiles.old"
-  }
-  New-Item -ItemType Junction -Path $VimfilesPath -Target $CurrentDir
-
+  Install-Item -Name _vimrc -Type SymbolicLink -Dir $HOME -Target $CurrentDir\vimrc
+  Install-Item -Name vimfiles -Type Junction -Dir $HOME -Target $CurrentDir
   Write-Host "Installed c-vim for vim" -ForegroundColor Green
 
   if (-Not (Test-Path -Path "$CurrentDir\plugged")) {
