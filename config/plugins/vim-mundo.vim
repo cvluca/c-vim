@@ -1,6 +1,10 @@
 " Enable persistent undo so that undo history persists across vim sessions
 set undofile
-let undodir = g:c_vim_source_path . '/undo'
+if has('win32')
+  let undodir = g:c_vim_source_path . '\undo'
+else
+  let undodir = g:c_vim_source_path . '/undo'
+endif
 execute "set undodir=" . undodir
 nnoremap <Leader><Leader>u :MundoToggle<CR>
 
