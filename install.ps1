@@ -75,7 +75,7 @@ function Install-Vim
   Write-Host "Installed c-vim for vim" -ForegroundColor Green
 
   if (-Not (Test-Path -Path "$CurrentDir\plugged")) {
-    nvim +PlugInstall! +PlugClean! +qall
+    vim +PlugInstall! +PlugClean! +qall
     Write-Host "Installed plugins" -ForegroundColor Green
   }
 }
