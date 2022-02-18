@@ -83,6 +83,7 @@ let g:mapleader = "\<Space>"
 set noswapfile
 
 nmap <C-x> :bp\|bd #<CR>
+tnoremap <C-x> <C-\><C-n>
 
 au BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
