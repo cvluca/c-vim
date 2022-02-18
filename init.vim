@@ -1,7 +1,9 @@
 let g:c_vim_source_path = fnamemodify(expand('<sfile>'), ':h')
 
 if has('win32')
-  let g:c_vim_viminfo = 'shada/main.shada'
+  set shellslash
+  let g:c_vim_viminfo = fnamemodify(expand('<sfile>'), ':h') . '/shada/main.shada'
+  set noshellslash
   let g:c_vim_config_path = g:c_vim_source_path . '\config\'
   let g:c_vim_plugged_path = g:c_vim_source_path . '\plugged\'
   let g:c_vim_plugins_config_dir = 'plugins\'
