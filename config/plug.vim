@@ -56,8 +56,8 @@ let coc_plugins = [
   \['neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}],
   \['clangd/coc-clangd', {'do': 'yarn install --frozen-lockfile'}],
   \['voldikss/coc-cmake', {'do': 'yarn install --frozen-lockfile'}],
-  \['coc-extenstions/coc-powershell', {'do': 'yarn install --frozen-lockfile'}],
-  \['coc-extenstions/coc-omnisharp', {'do': 'yarn install --frozen-lockfile'}],
+  \['coc-extensions/coc-powershell', {'do': 'yarn install --frozen-lockfile'}],
+  \['coc-extensions/coc-omnisharp', {'do': 'yarn install --frozen-lockfile'}],
   \]
 
 if g:c_vim_enable_coc_plugins == 1
