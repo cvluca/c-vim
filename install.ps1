@@ -16,21 +16,34 @@ function Install-Neovim
 {
   Write-Host "Install c-vim for neovim ..."
   $NvimPath = "$HOME\AppData\Local\nvim"
+  $NvimBackupPath = "$NvimPath.old"
   $NvimDataPath = "$HOME\AppData\Local\nvim-data"
+  $NvimDataBackupPath = "$NvimDataPath.old"
 
   if (Test-Path -Path $NvimPath) {
-    [IO.Directory]::Delete("$HOME\AppData\Local\nvim.old")
+    if (Test-Path -Path $NvimBackupPath) {
+      [IO.Directory]::Delete($NvimBackupPath)
+    }
     Rename-Item -Path $NvimPath -NewName "nvim.old"
     Write-Host "backup nvim folder nvim.old"
   }
   New-Item -ItemType Junction -Path $NvimPath -Target $CurrentDir
 
   if (Test-Path -Path $NvimDataPath) {
-    [IO.Directory]::Delete("$HOME\AppData\Local\nvim-data.old")
+    if (Test-Path -Path $NvimBackupPath) {
+      [IO.Directory]::Delete($NvimDataBackupPath)
+    }
     Rename-Item -Path $NvimDataPath -NewName "nvim-data.old"
     Write-Host "backup nvim-data folder nvim-data.old"
   }
   New-Item -ItemType Junction -Path $NvimDataPath -Target $CurrentDir
+
+  Write-Host "Installed c-vim for neovim" -ForegroundColor Green
+
+  if (Test-Path -Path "$CurrentDir\plugged") {
+    nvim +PlugInstall! +PlugClean! +CocUpdate! +qall
+    Write-Host "Installed plugins" -ForegroundColor Green
+  }
 }
 
 function Install-Vim
