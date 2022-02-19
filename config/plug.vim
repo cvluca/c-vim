@@ -9,10 +9,8 @@ fu! LoadPlugins(plugins)
 endf
 
 let c_vim_plugins = [
-  \['scrooloose/nerdtree'],
   \['scrooloose/nerdcommenter'],
   \['tpope/vim-commentary'],
-  \['Xuyuanp/nerdtree-git-plugin'],
   \['vim-airline/vim-airline'],
   \['vim-airline/vim-airline-themes'],
   \['ntpeters/vim-better-whitespace'],
@@ -58,6 +56,7 @@ let coc_plugins = [
   \['voldikss/coc-cmake', {'do': 'yarn install --frozen-lockfile'}],
   \['coc-extensions/coc-powershell', {'do': 'yarn install --frozen-lockfile'}],
   \['coc-extensions/coc-omnisharp', {'do': 'yarn install --frozen-lockfile'}],
+  \['weirongxu/coc-explorer', {'do': 'yarn install --frozen-lockfile'}],
   \]
 
 if g:c_vim_enable_coc_plugins == 1
@@ -81,7 +80,8 @@ if g:c_vim_enable_coc_plugins == 1
       \'coc-clangd',
       \'coc-cmake',
       \'coc-powershell',
-      \'coc-omnisharp'
+      \'coc-omnisharp',
+      \'coc-explorer'
       \]
   endif
 endif

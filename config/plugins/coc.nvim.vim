@@ -123,3 +123,6 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " gopls
 " autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+
+" coc-explorer
+nmap <space>t <Cmd>CocCommand explorer<CR>

@@ -15,8 +15,6 @@ call plug#end()
 call LoadConfig('base.vim')
 
 let plugins_config_source = [
-  \'nerdtree',
-  \'nerdtree-git-plugin',
   \'nerdcommenter',
   \'gruvbox',
   \'vim-airline',
