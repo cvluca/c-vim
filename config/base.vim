@@ -23,6 +23,7 @@ nnoremap gj j
 
 set guioptions=T
 set backspace=indent,eol,start
+set nofixeol
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file

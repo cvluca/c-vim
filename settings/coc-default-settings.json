@@ -9,5 +9,6 @@
   },
   "clangd.semanticHighlighting": true,
   "python.jediEnabled": false,
-  "python.pythonPath": "python"
+  "python.pythonPath": "python",
+  "powershell.integratedConsole.showOnStartup": false
 }
