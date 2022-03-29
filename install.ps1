@@ -68,6 +68,14 @@ function Install-Vim
   }
 }
 
+function UseDefaultSettings
+{
+    if (!(Test-Path "$PSScriptRoot\coc-settings.json"))
+    {
+        Install-Item -Name "coc-settings.json" -Type SymbolicLink -Dir $PSScriptRoot -Target "$PSScriptRoot\settings\coc-default-settings.json"
+    }
+}
+
 if ($Uninstall)
 {
   Uninstall
@@ -91,3 +99,5 @@ else
 {
   Write-Error "Unknown: $Install"
 }
+
+UseDefaultSettings
