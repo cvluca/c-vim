@@ -60,6 +60,8 @@ function Install-Vim
   Write-Host "Install c-vim for vim ..."
   Install-Item -Name _vimrc -Type SymbolicLink -Dir $HOME -Target $CurrentDir\vimrc
   Install-Item -Name vimfiles -Type Junction -Dir $HOME -Target $CurrentDir
+  Install-Item -Name .vimrc -Type SymbolicLink -Dir $HOME -Target $CurrentDir\vimrc
+  Install-Item -Name .vim -Type Junction -Dir $HOME -Target $CurrentDir
   Write-Host "Installed c-vim for vim" -ForegroundColor Green
 
   if (-Not (Test-Path -Path "$CurrentDir\plugged")) {
