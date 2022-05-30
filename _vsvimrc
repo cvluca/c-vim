@@ -1,0 +1,26 @@
+" Show line number
+set number
+
+" Show relative line number
+set relativenumber
+
+" jk to Esc
+inoremap jk <Esc>
+
+"Treat long lines as break lines (useful when moving around in them)
+nnoremap k gk
+nnoremap gk k
+nnoremap j gj
+nnoremap gj j
+
+set backspace=indent,eol,start
+set nofixeol
+
+" Use spaces instead of tabs
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+
+" Always show the status line
+set laststatus=2
