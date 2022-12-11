@@ -46,7 +46,6 @@ let coc_plugins = [
   \['neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}],
   \['neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}],
   \['neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}],
-  \['neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}],
   \['neoclide/coc-emmet', {'do': 'yarn install --frozen-lockfile'}],
   \['neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}],
   \['neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile'}],
@@ -57,6 +56,7 @@ let coc_plugins = [
   \['coc-extensions/coc-powershell', {'do': 'yarn install --frozen-lockfile'}],
   \['coc-extensions/coc-omnisharp', {'do': 'yarn install --frozen-lockfile'}],
   \['weirongxu/coc-explorer', {'do': 'yarn install --frozen-lockfile'}],
+  \['fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}],
   \]
 
 if g:c_vim_enable_coc_plugins == 1
@@ -71,7 +71,6 @@ if g:c_vim_enable_coc_plugins == 1
       \'coc-snippets',
       \'coc-highlight',
       \'coc-python',
-      \'coc-rls',
       \'coc-emmet',
       \'coc-yank',
       \'coc-lists',
@@ -81,7 +80,8 @@ if g:c_vim_enable_coc_plugins == 1
       \'coc-cmake',
       \'coc-powershell',
       \'coc-omnisharp',
-      \'coc-explorer'
+      \'coc-explorer',
+      \'coc-rust-analyzer'
       \]
   endif
 endif
