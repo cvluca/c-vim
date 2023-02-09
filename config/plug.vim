@@ -27,6 +27,7 @@ let c_vim_plugins = [
   \['fatih/vim-go'],
   \['derekwyatt/vim-fswitch'],
   \['jackguo380/vim-lsp-cxx-highlight'],
+  \['github/copilot.vim'],
   \]
 
 let c_vim_plugins_with_py = [
