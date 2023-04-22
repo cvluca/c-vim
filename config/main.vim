@@ -29,6 +29,7 @@ let plugins_config_source = [
   \'vim-mundo',
   \'vim-fswitch',
   \'vimspector',
+  \'copilot',
   \]
 
 for plugin in plugins_config_source
