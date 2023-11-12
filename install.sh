@@ -98,7 +98,7 @@ uninstall_neovim () {
 
 use_default_setting () {
   if [[ ! -f "$CURRENT_DIR/coc-settings.json" ]]; then
-    ln -s $CURRENT_DIR/settings/coc-settings-default.json $CURRENT_DIR/coc-settings.json
+    ln -s $CURRENT_DIR/settings/coc-default-settings.json $CURRENT_DIR/coc-settings.json
   fi
 }
 

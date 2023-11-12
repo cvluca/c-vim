@@ -11,5 +11,6 @@
   "python.jediEnabled": false,
   "python.pythonPath": "python",
   "powershell.integratedConsole.showOnStartup": false,
-  "explorer.file.showHiddenFiles": true
+  "explorer.file.showHiddenFiles": true,
+  "snippets.ultisnips.pythonPrompt": false
 }
