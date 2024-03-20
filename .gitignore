@@ -8,3 +8,8 @@ shada
 undo
 coc-settings.json
 *log
+lazy/
+nvchad/
+mason/
+lazy-lock.json
+telescope_history
