@@ -1,5 +1,24 @@
 -- local configs = require("nvchad.configs.lspconfig")
 
+local on_attach = function ()
+  vim.diagnostic.config({
+    virtual_text = false
+  })
+  vim.api.nvim_create_autocmd("CursorHold", {
+    buffer = bufnr,
+    callback = function()
+      local opts = {
+        focusable = false,
+        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+        border = 'rounded',
+        source = 'always',
+        prefix = ' ',
+        scope = 'cursor',
+      }
+      vim.diagnostic.open_float(nil, opts)
+    end
+  })
+end
 -- local on_attach = configs.on_attach
 -- local on_init = configs.on_init
 -- local capabilities = configs.capabilities
@@ -44,7 +63,8 @@ lspconfig.lua_ls.setup {
   end,
   settings = {
     Lua = {}
-  }
+  },
+  on_attach = on_attach,
 }
 
 lspconfig.ccls.setup {
@@ -56,5 +76,7 @@ lspconfig.ccls.setup {
     clang = {
       excludeArgs = { "-frounding-math"} ;
     };
-  }
+  },
+  offsetEncoding = {"utf-8", "utf-16"},
+  on_attach = on_attach,
 }
