@@ -31,6 +31,10 @@ end, { desc = "File Format with conform" })
 map("n", "<leader>tt", function()
   require("nvim-tree.api").tree.toggle({ path = "<args>", find_file = false, update_root = false, focus = true, })
 end, { desc = "Nvimtree Toggle window" })
+map("n", "<C-n>", function()
+  require("nvim-tree.api").tree.toggle({ path = "<args>", find_file = true, update_root = false, focus = true, })
+end, { desc = "Nvimtree Toggle window" })
+
 
 -- Telescope
 
