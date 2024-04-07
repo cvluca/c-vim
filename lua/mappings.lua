@@ -8,6 +8,12 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 
 map("i", "jk", "<ESC>", { desc = "Escape insert mode" })
 
+-- Treat long lines as break lines (useful when moving around in them)
+map("n", "k", "gk", { desc = "Treat long lines as break lines" })
+map("n", "gk", "k", { desc = "Treat long lines as break lines" })
+map("n", "j", "gj", { desc = "Treat long lines as break lines" })
+map("n", "gj", "j", { desc = "Treat long lines as break lines" })
+
 -- nvchad
 
 map("n", "<C-x>", function()
