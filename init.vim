@@ -1,4 +1,4 @@
-if has('nvim-0.8')
+if has('nvim-0.9')
     lua require('init')
 else
     let g:c_vim_source_path = stdpath('config')

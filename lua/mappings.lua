@@ -78,3 +78,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end, vim.tbl_extend("force", opts, { desc = "Lsp Format" }))
   end,
 })
+
+-- nvim-ufo
+-- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
+map('n', 'zR', require('ufo').openAllFolds)
+map('n', 'zM', require('ufo').closeAllFolds)
