@@ -14,9 +14,14 @@ local function nvim_tree_on_attach(bufnr)
   vim.keymap.set('n', '?',     api.tree.toggle_help,                  opts('Help'))
 end
 
--- pass to setup along with your other options
-require("nvim-tree").setup {
-  ---
-  on_attach = nvim_tree_on_attach,
-  ---
+return {
+  "nvim-tree/nvim-tree.lua",
+  opts = {
+    git = { enable = true },
+  },
+  config = function()
+    require("nvim-tree").setup {
+      on_attach = nvim_tree_on_attach,
+    }
+  end,
 }

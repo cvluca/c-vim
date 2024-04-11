@@ -6,4 +6,9 @@ local options = {
   },
 }
 
-require("conform").setup(options)
+return {
+  "stevearc/conform.nvim",
+  config = function()
+    require("conform").setup(options)
+  end,
+}

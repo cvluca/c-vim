@@ -7,4 +7,10 @@ local options = {
   },
 }
 
-require("copilot").setup(options)
+return {
+  "zbirenbaum/copilot.lua",
+  event = "InsertEnter",
+  config = function()
+    require("copilot").setup(options)
+  end,
+}
