@@ -15,5 +15,7 @@ return {
 
   { import = "configs.statuscol" },
 
-  { import = "configs.nvim-ufo" }
+  { import = "configs.nvim-ufo" },
+
+  { import = "configs.gutentags_plus" }
 }
