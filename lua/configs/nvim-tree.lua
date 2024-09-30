@@ -20,6 +20,13 @@ return {
     git = { enable = true },
   },
   config = function()
+    vim.cmd([[
+      augroup nvim_tree_find_file
+      autocmd!
+      autocmd BufEnter * lua require("nvim-tree.api").tree.find_file({ update_root = false, open = false, focus = false, })
+      augroup END
+    ]])
+
     require("nvim-tree").setup {
       on_attach = nvim_tree_on_attach,
     }

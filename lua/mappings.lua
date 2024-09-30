@@ -34,7 +34,9 @@ end, { desc = "Nvimtree Toggle window" })
 map("n", "<C-n>", function()
   require("nvim-tree.api").tree.toggle({ path = "<args>", find_file = true, update_root = false, focus = true, })
 end, { desc = "Nvimtree Toggle window" })
-
+map("n", "<leader>tf", function()
+  require("nvim-tree.api").tree.find_file({ update_root = false, open = true, focus = true, })
+end, { desc = "Nvimtree Find file" })
 
 -- Telescope
 
