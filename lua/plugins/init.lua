@@ -17,5 +17,7 @@ return {
 
   { import = "configs.nvim-ufo" },
 
-  { import = "configs.gutentags_plus" }
+  { import = "configs.gutentags_plus" },
+
+  { import = "configs.nvim-autopairs" },
 }
