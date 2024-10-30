@@ -82,6 +82,9 @@ return  {
         clang = {
           excludeArgs = { "-frounding-math"} ;
         };
+        cache = {
+          directory = "/tmp/ccls-cache";
+        };
       },
       offsetEncoding = {"utf-8", "utf-16"},
       on_attach = on_attach,
