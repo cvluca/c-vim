@@ -41,7 +41,7 @@ return  {
     -- end
     --
     lspconfig.lua_ls.setup {
-        on_init = function(client)
+      on_init = function(client)
         local path = client.workspace_folders[1].name
         if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
           return
@@ -88,6 +88,19 @@ return  {
       },
       offsetEncoding = {"utf-8", "utf-16"},
       on_attach = on_attach,
+    }
+
+    lspconfig.gopls.setup {
+      cmd = { "gopls", "serve" },
+      on_attach = on_attach,
+      capabilities = {
+        offsetEncoding = { "utf-8", "utf-16" },
+        workspace = {
+          didChangeWatched = {
+            dynamicRegistration = true,
+          },
+        },
+      },
     }
   end,
 }
