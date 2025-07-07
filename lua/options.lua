@@ -28,11 +28,3 @@ vim.opt.foldlevel = 99 -- Using ufo provider need a large value, feel free to de
 vim.opt.foldlevelstart = 99
 vim.opt.foldenable = true
 vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-
--- Set commentstring for cuda filetype
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "cuda",
-  callback = function()
-    vim.opt_local.commentstring = "// %s"
-  end,
-})

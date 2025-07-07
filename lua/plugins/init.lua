@@ -20,4 +20,6 @@ return {
   { import = "configs.gutentags_plus" },
 
   { import = "configs.nvim-autopairs" },
+
+  { import = "configs.Comment" },
 }
