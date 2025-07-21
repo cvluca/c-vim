@@ -22,4 +22,6 @@ return {
   { import = "configs.nvim-autopairs" },
 
   { import = "configs.Comment" },
+
+  { import = "configs.vimtex" },
 }
