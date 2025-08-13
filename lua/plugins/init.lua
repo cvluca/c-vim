@@ -24,4 +24,6 @@ return {
   { import = "configs.Comment" },
 
   { import = "configs.vimtex" },
+
+  { import = "configs.claude-code" },
 }
