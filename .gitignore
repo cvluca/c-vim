@@ -11,6 +11,6 @@ coc-settings.json
 lazy/
 nvchad/
 mason/
-nvnotify1/
+nvnotify*
 lazy-lock.json
 telescope_history
