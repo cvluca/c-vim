@@ -23,8 +23,6 @@ end
 -- local on_init = configs.on_init
 -- local capabilities = configs.capabilities
 
-local lspconfig = require "lspconfig"
-
 -- local servers = { "lua_ls" }
 
 return  {
@@ -40,7 +38,7 @@ return  {
     --   }
     -- end
     --
-    lspconfig.lua_ls.setup {
+    vim.lsp.config('lua_ls', {
       on_init = function(client)
         local path = client.workspace_folders[1].name
         if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
@@ -71,9 +69,9 @@ return  {
         Lua = {}
       },
       on_attach = on_attach,
-    }
+    })
 
-    lspconfig.ccls.setup {
+    vim.lsp.config('ccls', {
       init_options = {
         compilationDatabaseDirectory = "build";
         index = {
@@ -88,9 +86,9 @@ return  {
       },
       offsetEncoding = {"utf-8", "utf-16"},
       on_attach = on_attach,
-    }
+    })
 
-    lspconfig.gopls.setup {
+    vim.lsp.config('gopls', {
       cmd = { "gopls", "serve" },
       on_attach = on_attach,
       capabilities = {
@@ -101,6 +99,6 @@ return  {
           },
         },
       },
-    }
+    })
   end,
 }
