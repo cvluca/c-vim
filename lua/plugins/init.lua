@@ -26,4 +26,6 @@ return {
   { import = "configs.vimtex" },
 
   { import = "configs.claude-code" },
+
+  { import = "configs.leap" },
 }
