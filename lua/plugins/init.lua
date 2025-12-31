@@ -25,7 +25,7 @@ return {
 
   { import = "configs.vimtex" },
 
-  { import = "configs.claude-code" },
+  { import = "configs.toggleterm" },
 
   { import = "configs.leap" },
 }
