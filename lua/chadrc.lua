@@ -1,5 +1,9 @@
 local M = {}
 
+-- Cache for terminal program names to avoid frequent system calls
+M._term_program_cache = {}
+M._cache_timeout = 1000  -- Cache timeout in milliseconds
+
 M.gutentags = function()
   -- Define the callback function for Gutentags status within the same function
   local function gutentags_status_cb(mods)
@@ -45,51 +49,87 @@ M.file = function()
 
     -- Helper function to get running program in a terminal
     local function get_term_program(term_id)
+      -- Check cache first
+      local now = vim.loop.now()
+      local cache_entry = M._term_program_cache[term_id]
+
+      if cache_entry and (now - cache_entry.timestamp) < M._cache_timeout then
+        return cache_entry.program
+      end
+
+      -- Cache miss or expired, fetch new data
       local ok, terms = pcall(require, "toggleterm.terminal")
       if not ok then return nil end
 
       local term = terms.get(term_id)
-      if not term or not term.job_id then return nil end
+      if not term or not term.job_id then
+        M._term_program_cache[term_id] = nil
+        return nil
+      end
 
       -- Get the child process of the terminal
       local pid = vim.fn.jobpid(term.job_id)
-      if not pid then return nil end
+      if not pid then
+        M._term_program_cache[term_id] = nil
+        return nil
+      end
+
+      local program = nil
 
       -- Try to get the foreground process command line (child of shell)
-      local handle = io.popen("ps -o args= --ppid " .. pid .. " 2>/dev/null | head -n1")
+      -- macOS-compatible way to get child processes
+      local handle = io.popen("pgrep -P " .. pid .. " 2>/dev/null")
       if handle then
-        local cmdline = handle:read("*a"):gsub("^%s+", ""):gsub("%s+$", "")
+        local child_pid = handle:read("*a"):gsub("%s+", "")
         handle:close()
 
-        if cmdline ~= "" then
-          -- Extract program name from command line
-          -- Remove leading path and arguments
-          local program = cmdline:match("^([^%s]+)") or cmdline
-          program = program:match("([^/]+)$") or program  -- Remove path
+        if child_pid ~= "" then
+          -- Get the command line of the child process
+          local cmd_handle = io.popen("ps -o args= -p " .. child_pid .. " 2>/dev/null")
+          if cmd_handle then
+            local cmdline = cmd_handle:read("*a"):gsub("^%s+", ""):gsub("%s+$", "")
+            cmd_handle:close()
 
-          -- Special handling for interpreters
-          if program:match("^python") or program:match("^node") or program:match("^ruby") then
-            -- Try to get the script name
-            local script = cmdline:match("^%S+%s+([^%s%-]+)")
-            if script and not script:match("^%-") then
-              script = script:match("([^/]+)$") or script  -- Remove path
-              return script
+            if cmdline ~= "" then
+              -- Extract program name from command line
+              -- Remove leading path and arguments
+              program = cmdline:match("^([^%s]+)") or cmdline
+              program = program:match("([^/]+)$") or program  -- Remove path
+
+              -- Special handling for interpreters
+              if program:match("^python") or program:match("^node") or program:match("^ruby") then
+                -- Try to get the script name
+                local script = cmdline:match("^%S+%s+([^%s%-]+)")
+                if script and not script:match("^%-") then
+                  script = script:match("([^/]+)$") or script  -- Remove path
+                  program = script
+                end
+              end
             end
           end
-
-          return program
         end
       end
 
-      -- Fallback: get the shell name
-      local shell_handle = io.popen("ps -o comm= -p " .. pid .. " 2>/dev/null")
-      if shell_handle then
-        local shell = shell_handle:read("*a"):gsub("%s+", "")
-        shell_handle:close()
-        return shell ~= "" and shell or nil
+      -- Fallback: get the shell name if no child process found
+      if not program then
+        local shell_handle = io.popen("ps -o comm= -p " .. pid .. " 2>/dev/null")
+        if shell_handle then
+          local shell = shell_handle:read("*a"):gsub("%s+", "")
+          shell_handle:close()
+          if shell ~= "" then
+            -- Remove path prefix (e.g., /bin/zsh -> zsh)
+            program = shell:match("([^/]+)$") or shell
+          end
+        end
       end
 
-      return nil
+      -- Update cache
+      M._term_program_cache[term_id] = {
+        program = program,
+        timestamp = now
+      }
+
+      return program
     end
 
     -- Build the display string with all terminal IDs and programs
