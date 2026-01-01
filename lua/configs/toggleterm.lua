@@ -232,6 +232,58 @@ return {
           ensure_terminal_mode()
         end
       end,
+
+      ['v'] = function()
+        -- View terminal history in a separate buffer
+        local term_buf = vim.api.nvim_get_current_buf()
+        local term_actual_id = get_current_term_id()
+        local lines = vim.api.nvim_buf_get_lines(term_buf, 0, -1, false)
+
+        -- Find logical ID for display
+        local bufname = vim.api.nvim_buf_get_name(term_buf)
+        local actual_id = tonumber(bufname:match('toggleterm#(%d+)'))
+        local logical_id = nil
+        if actual_id then
+          local id_map = vim.g.toggleterm_id_map or {}
+          for lid, aid in ipairs(id_map) do
+            if aid == actual_id then
+              logical_id = lid
+              break
+            end
+          end
+        end
+
+        -- Create new scratch buffer
+        vim.cmd('enew')
+        local view_buf = vim.api.nvim_get_current_buf()
+        vim.api.nvim_buf_set_lines(view_buf, 0, -1, false, lines)
+
+        -- Set buffer options
+        vim.bo[view_buf].buftype = 'nofile'
+        vim.bo[view_buf].bufhidden = 'wipe'
+        vim.bo[view_buf].swapfile = false
+        vim.bo[view_buf].modifiable = false
+
+        -- Set buffer name
+        local buf_title = 'Terminal ' .. (logical_id or actual_id or '?') .. ' History'
+        vim.api.nvim_buf_set_name(view_buf, buf_title)
+
+        -- Move cursor to bottom (latest output)
+        vim.cmd('normal! G')
+
+        -- Function to return to terminal
+        local function return_to_terminal()
+          vim.cmd('close')
+          if term_actual_id and vim.api.nvim_buf_is_valid(term_buf) then
+            vim.cmd(term_actual_id .. 'ToggleTerm')
+            ensure_terminal_mode()
+          end
+        end
+
+        -- Add keymap to close with q or Esc and return to terminal
+        vim.keymap.set('n', 'q', return_to_terminal, { buffer = view_buf, nowait = true })
+        vim.keymap.set('n', '<Esc>', return_to_terminal, { buffer = view_buf, nowait = true })
+      end,
     }
 
     -- Add number key actions (1-9) - use logical IDs
@@ -276,6 +328,15 @@ return {
       vim.cmd('redrawstatus')
     end
 
+    -- Configure terminal buffer behavior
+    vim.api.nvim_create_autocmd('TermOpen', {
+      pattern = '*toggleterm#*',
+      callback = function()
+        vim.opt_local.scrolloff = 0
+        vim.opt_local.bufhidden = 'hide'
+      end,
+    })
+
     -- Auto-reset Ctrl-t mode when leaving terminal buffer
     vim.api.nvim_create_autocmd({'BufLeave', 'BufWinLeave'}, {
       pattern = '*toggleterm#*',
@@ -306,7 +367,7 @@ return {
 
       -- Valid keys for Ctrl-t mode
       local valid_keys = {
-        c = true, d = true, h = true, l = true,
+        c = true, d = true, h = true, l = true, v = true,
         ['1'] = true, ['2'] = true, ['3'] = true, ['4'] = true, ['5'] = true,
         ['6'] = true, ['7'] = true, ['8'] = true, ['9'] = true
       }
@@ -334,7 +395,7 @@ return {
       end)
 
       -- Create temporary keymaps for all possible next keys
-      local keys_to_map = {'c', 'd', 'h', 'l', '<C-t>', '<Esc>', '1', '2', '3', '4', '5', '6', '7', '8', '9'}
+      local keys_to_map = {'c', 'd', 'h', 'l', 'v', '<C-t>', '<Esc>', '1', '2', '3', '4', '5', '6', '7', '8', '9'}
 
       for _, key in ipairs(keys_to_map) do
         local action
