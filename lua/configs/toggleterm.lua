@@ -160,7 +160,7 @@ return {
 
     -- Key handler actions
     local key_actions = {
-      ['d'] = function()
+      ['x'] = function()
         -- Kill current terminal with confirmation
         local current_actual_id = get_current_term_id()
         if not current_actual_id then return end
@@ -395,7 +395,7 @@ return {
       end)
 
       -- Create temporary keymaps for all possible next keys
-      local keys_to_map = {'c', 'd', 'h', 'l', 'v', '<C-t>', '<Esc>', '1', '2', '3', '4', '5', '6', '7', '8', '9'}
+      local keys_to_map = {'c', 'x', 'h', 'l', 'v', '<C-t>', '<Esc>', '1', '2', '3', '4', '5', '6', '7', '8', '9'}
 
       for _, key in ipairs(keys_to_map) do
         local action
